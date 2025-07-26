@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وایکینگ | Viking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@600;900&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6c38ff;
+            --secondary: #1b1f3a;
+            --accent: #25aefd;
+            --background: #101129;
+            --card: #181c35;
+            --success: #21e6c1;
+            --error: #ff4066;
+            --neon: 0 0 10px #6c38ff, 0 0 20px #25aefd;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--background) 0%, #240046 100%);
+            font-family: 'Vazirmatn', 'Orbitron', Arial, sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .container {
+            width: 100vw;
+            max-width: 410px;
+            margin: 2rem auto;
+            background: var(--card);
+            border-radius: 2.4rem;
+            box-shadow: 0 0 32px 0 #6c38ff44;
+            padding: 2rem 1.2rem 2.8rem 1.2rem;
+            box-sizing: border-box;
+        }
+        .logo {
+            font-family: 'Orbitron', 'Vazirmatn', sans-serif;
+            font-size: 2.45rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            text-align: center;
+            margin-bottom: 1.6rem;
+            text-shadow: var(--neon);
+        }
+        .btn {
+            width: 100%;
+            padding: 1.1rem 0;
+            background: linear-gradient(90deg, var(--primary) 60%, var(--accent) 100%);
+            border: none;
+            border-radius: 1.3rem;
+            font-size: 1.25rem;
+            font-family: 'Orbitron', 'Vazirmatn', sans-serif;
+            font-weight: 900;
+            color: #fff;
+            margin-top: 1.2rem;
+            margin-bottom: 0.2rem;
+            box-shadow: 0 0 10px #6c38ff66;
+            cursor: pointer;
+            transition: filter 0.2s;
+            text-shadow: 0 0 7px #c4aaff77;
+        }
+        .btn:hover {
+            filter: brightness(1.2);
+        }
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+            display: block;
+            font-family: 'Vazirmatn', Arial, sans-serif;
+            color: var(--success);
+            letter-spacing: 0.05em;
+            text-shadow: 0 0 5px #6c38ff33;
+        }
+        input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border-radius: 1.1rem;
+            border: none;
+            background: #23234b;
+            color: #fff;
+            font-size: 1rem;
+            font-family: 'Vazirmatn', Arial, sans-serif;
+            outline: none;
+            box-shadow: 0 0 5px #25aefd44;
+            margin-bottom: 0.3rem;
+            transition: box-shadow 0.15s;
+        }
+        input:focus {
+            box-shadow: 0 0 12px #25aefd77;
+        }
+        .members-list {
+            margin-top: 2rem;
+        }
+        .member-card {
+            background: linear-gradient(85deg, #21214a 70%, #25104a 100%);
+            border-radius: 1.5rem;
+            margin-bottom: 1.1rem;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 0 16px #6c38ff33;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.14s;
+        }
+        .member-card:hover {
+            transform: scale(1.03) translateY(-2px);
+            box-shadow: 0 0 22px #25aefd77;
+        }
+        .avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            margin-left: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-size: 1.25rem;
+            font-weight: 900;
+            text-shadow: 0 0 8px #fff4;
+        }
+        .member-info {
+            flex: 1;
+        }
+        .member-username {
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .member-name {
+            color: #fff;
+            font-size: 1rem;
+            font-family: 'Vazirmatn', Arial, sans-serif;
+            margin-top: 0.18rem;
+        }
+        .badge-viking {
+            background: var(--success);
+            color: var(--secondary);
+            border-radius: 0.9rem;
+            font-size: 0.78rem;
+            font-weight: 900;
+            padding: 0.1rem 0.8rem;
+            margin-right: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+        .status-pending {
+            background: var(--error);
+            color: #fff;
+            padding: 0.1rem 0.7rem;
+            font-size: 0.8rem;
+            border-radius: 1rem;
+            margin-right: 0.7rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+        }
+        .card {
+            background: #22224aee;
+            border-radius: 1.5rem;
+            padding: 1.5rem 1.2rem;
+            box-shadow: 0 0 16px #6c38ff33;
+            margin-top: 1.1rem;
+            color: #fff;
+            font-family: 'Vazirmatn', Arial, sans-serif;
+        }
+        .profile-container {
+            margin-top: 1.5rem;
+        }
+        .profile-title {
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 900;
+            margin-bottom: 0.7rem;
+            text-shadow: var(--neon);
+        }
+        .profile-info {
+            color: #fff;
+            font-size: 1.08rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Vazirmatn', Arial, sans-serif;
+        }
+        .soroush-box {
+            margin-top: 2.3rem;
+            background: #2d1e4aee;
+            border-radius: 1.3rem;
+            padding: 1.2rem 1rem 1.3rem 1rem;
+            color: #fff;
+            font-family: 'Vazirmatn', Arial, sans-serif;
+            font-size: 1.1rem;
+            line-height: 2;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 10px #25aefd44;
+        }
+        .soroush-username {
+            color: var(--success);
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-size: 1.12rem;
+            direction: ltr;
+            display: inline-block;
+            margin-right: 0.6rem;
+        }
+        .neon {
+            color: var(--accent);
+            text-shadow: var(--neon);
+        }
+        @media (max-width: 500px) {
+            .container {
+                margin: 0.6rem 0 0 0;
+                border-radius: 0;
+                min-height: 100vh;
+                max-width: 100vw;
+                padding: 1.1rem 0.3rem 2.2rem 0.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="main-container">
+        <div class="logo">وایکینگ <span class="neon" style="font-size:1.1rem">/Viking/</span></div>
+        <button class="btn" id="btn-register-start">در وایکینگ ثبت نام کن 🚀</button>
+    </div>
+
+    <script>
+        // --- Storage Helper Functions ---
+        function getUsers() {
+            return JSON.parse(localStorage.getItem("users") || "[]");
+        }
+        function saveUsers(users) {
+            localStorage.setItem("users", JSON.stringify(users));
+        }
+        function getSession() {
+            return JSON.parse(localStorage.getItem("session") || "{}");
+        }
+        function setSession(obj) {
+            localStorage.setItem("session", JSON.stringify(obj));
+        }
+        function clearSession() {
+            localStorage.removeItem("session");
+        }
+
+        // --- Global State ---
+        let currentUser = null;
+
+        // --- Utility Functions ---
+        function randomAvatar(name) {
+            // Simple initials as avatar
+            const initials = name.trim().split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
+            return `<div class="avatar">${initials}</div>`;
+        }
+        function showMessage(msg, color = "#21e6c1") {
+            return `<div style="margin:1.2rem 0 0.5rem 0;text-align:center;font-size:1.15rem;font-weight:700;color:${color};text-shadow:0 0 8px #25aefd33;">${msg}</div>`;
+        }
+        function validateUsername(username) {
+            return /^[a-zA-Z0-9_.-]+$/.test(username);
+        }
+
+        // --- UI Navigation ---
+        function showRegisterForm() {
+            document.getElementById('main-container').innerHTML = `
+                <div class="logo">فرم ثبت نام وایکینگ</div>
+                <form id="register-form" autocomplete="off">
+                    <div class="input-group">
+                        <label>نام کامل</label>
+                        <input type="text" id="reg-name" required placeholder="مثلاً پوریا شریفی">
+                    </div>
+                    <div class="input-group">
+                        <label>نام کاربری (با حروف انگلیسی)</label>
+                        <input type="text" id="reg-username" required placeholder="مثلاً porya32">
+                    </div>
+                    <div class="input-group">
+                        <label>شهر / محل سکونت</label>
+                        <input type="text" id="reg-city" required placeholder="مثلاً تهران">
+                    </div>
+                    <div class="input-group">
+                        <label>سن</label>
+                        <input type="number" id="reg-age" required min="6" max="100" placeholder="مثلاً ۲۱">
+                    </div>
+                    <div class="input-group">
+                        <label>پسورد</label>
+                        <input type="password" id="reg-pass" required minlength="4" placeholder="حداقل ۴ رقم">
+                    </div>
+                    <button class="btn" type="submit">ثبت نام و ورود به سایت</button>
+                    <button class="btn" style="background:var(--secondary);margin-top:1rem;" type="button" id="btn-back-home">بازگشت</button>
+                </form>
+            `;
+            document.getElementById('register-form').onsubmit = handleRegister;
+            document.getElementById('btn-back-home').onclick = () => location.reload();
+        }
+
+        function showLoginForm(msg = "") {
+            document.getElementById('main-container').innerHTML = `
+                <div class="logo">ورود به وایکینگ</div>
+                ${msg ? showMessage(msg, "#ff4066") : ""}
+                <form id="login-form" autocomplete="off">
+                    <div class="input-group">
+                        <label>نام کاربری</label>
+                        <input type="text" id="login-username" required placeholder="نام کاربری">
+                    </div>
+                    <div class="input-group">
+                        <label>پسورد</label>
+                        <input type="password" id="login-pass" required placeholder="پسورد">
+                    </div>
+                    <button class="btn" type="submit">ورود</button>
+                    <button class="btn" style="background:var(--secondary);margin-top:1rem;" type="button" id="btn-back-home">بازگشت</button>
+                </form>
+            `;
+            document.getElementById('login-form').onsubmit = handleLogin;
+            document.getElementById('btn-back-home').onclick = () => location.reload();
+        }
+
+        function showPendingApproval(user, fromLogin = false) {
+            document.getElementById('main-container').innerHTML = `
+                <div class="logo">در انتظار تایید...</div>
+                ${showMessage(fromLogin ? "حساب شما هنوز توسط مدیر تایید نشده است." : "ثبت نام با موفقیت انجام شد!")}
+                <div class="soroush-box">
+                    <div>
+                        برای تایید شدن در <span class="neon">وایکینگ</span>، <br>
+                        لطفاً جلوی اسم پروفایل خودتان، کلمه
+                        <span class="neon"> وایکینگ /viking/ ⁽ⱽⁱᵏⁱⁿᵍ⁾‌‌ </span>
+                        را بگذارید و سپس به آیدی زیر در سروش پیام دهید:
+                    </div>
+                    <div style="margin:1.1rem 0 0 0;">
+                        <span class="soroush-username">@lIlIllIlIlIIl</span>
+                    </div>
+                </div>
+                <button class="btn" style="margin-top:2.2rem;" id="btn-back-home">بازگشت</button>
+            `;
+            document.getElementById('btn-back-home').onclick = () => location.reload();
+        }
+
+        function showMembersList() {
+            let users = getUsers().filter(u=>u.approved);
+            let html = `
+                <div class="logo">لیست اعضای وایکینگ</div>
+                <button class="btn" style="background:var(--secondary);margin-bottom:1.4rem;" id="btn-logout">خروج</button>
+                <div class="members-list">
+            `;
+            if (!users.length) {
+                html += showMessage("هنوز هیچ عضوی تایید نشده است!", "#25aefd");
+            } else {
+                users.forEach(u => {
+                    html += `
+                        <div class="member-card" onclick="showProfile('${u.username}')">
+                            ${randomAvatar(u.name)}
+                            <div class="member-info">
+                                <span class="member-username">@${u.username}</span>
+                                <span class="member-name">${u.name}</span>
+                                <span class="badge-viking">وایکینگ</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            html += `</div>`;
+            document.getElementById('main-container').innerHTML = html;
+
+            document.getElementById('btn-logout').onclick = () => {
+                clearSession();
+                location.reload();
+            };
+        }
+
+        function showProfile(username) {
+            let users = getUsers();
+            let user = users.find(u=>u.username===username);
+            if (!user) return alert('کاربر پیدا نشد!');
+            document.getElementById('main-container').innerHTML = `
+                <div class="logo">پروفایل عضو</div>
+                <div class="profile-container card">
+                    <div style="display:flex;align-items:center;">
+                        ${randomAvatar(user.name)}
+                        <div style="flex:1">
+                            <div class="profile-title">${user.name}</div>
+                            <div style="font-size:1rem;color:#25aefd">(@${user.username})</div>
+                        </div>
+                    </div>
+                    <div class="profile-info">سن: <b>${user.age}</b></div>
+                    <div class="profile-info">شهر: <b>${user.city}</b></div>
+                    <div class="profile-info">عضو رسمی <span class="neon">وایکینگ</span> 🟢</div>
+                </div>
+                <button class="btn" style="margin-top:2.2rem;" id="btn-back-list">بازگشت به لیست اعضا</button>
+            `;
+            document.getElementById('btn-back-list').onclick = showMembersList;
+        }
+
+        // --- Attach showProfile to window for inline onclick
+        window.showProfile = showProfile;
+
+        // --- Registration Handler ---
+        function handleRegister(e) {
+            e.preventDefault();
+            let name = document.getElementById('reg-name').value.trim();
+            let username = document.getElementById('reg-username').value.trim();
+            let city = document.getElementById('reg-city').value.trim();
+            let age = document.getElementById('reg-age').value.trim();
+            let pass = document.getElementById('reg-pass').value;
+
+            if (!validateUsername(username)) {
+                alert("نام کاربری فقط باید از حروف انگلیسی و اعداد باشد.");
+                return;
+            }
+            let users = getUsers();
+            if (users.some(u=>u.username.toLowerCase() === username.toLowerCase())) {
+                alert("این نام کاربری قبلاً ثبت نام شده است.");
+                return;
+            }
+            if (name.length < 2 || city.length < 2) {
+                alert("نام و شهر باید کامل وارد شود.");
+                return;
+            }
+            if (Number(age) < 6 || Number(age) > 100) {
+                alert("سن صحیح وارد شود.");
+                return;
+            }
+            if (pass.length < 4) {
+                alert("پسورد باید حداقل ۴ رقم باشد.");
+                return;
+            }
+            let user = {
+                name, username, city, age, pass,
+                approved: false
+            };
+            users.push(user);
+            saveUsers(users);
+            setSession({username, pass});
+            showPendingApproval(user, false);
+        }
+
+        // --- Login Handler ---
+        function handleLogin(e) {
+            e.preventDefault();
+            let username = document.getElementById('login-username').value.trim();
+            let pass = document.getElementById('login-pass').value;
+            let users = getUsers();
+            let user = users.find(u=>u.username.toLowerCase()===username.toLowerCase() && u.pass===pass);
+            if (!user) {
+                showLoginForm("نام کاربری یا پسورد اشتباه است.");
+                return;
+            }
+            setSession({username: user.username, pass: user.pass});
+            if (!user.approved) {
+                showPendingApproval(user, true);
+            } else {
+                showMembersList();
+            }
+        }
+
+        // --- Home/Register/Login Flow ---
+        document.getElementById('btn-register-start').onclick = () => {
+            showRegisterForm();
+        };
+
+        // --- Auto Login if Session Exists ---
+        window.onload = function() {
+            let session = getSession();
+            if (session && session.username && session.pass) {
+                let users = getUsers();
+                let user = users.find(u=>u.username === session.username && u.pass === session.pass);
+                if (user) {
+                    if (!user.approved) {
+                        showPendingApproval(user, true);
+                    } else {
+                        showMembersList();
+                    }
+                    return;
+                } else {
+                    clearSession();
+                }
+            }
+            // If not auto-login, after registration, show login
+            document.getElementById('btn-register-start').onclick = () => {
+                showRegisterForm();
+            };
+            // Extra: Let users who have registered login directly
+            let html = `
+                <div class="logo">وایکینگ <span class="neon" style="font-size:1.1rem">/Viking/</span></div>
+                <button class="btn" id="btn-register-start">در وایکینگ ثبت نام کن 🚀</button>
+                <button class="btn" style="background:var(--secondary);margin-top:1.1rem;" id="btn-login">ورود اعضا</button>
+            `;
+            document.getElementById('main-container').innerHTML = html;
+            document.getElementById('btn-register-start').onclick = showRegisterForm;
+            document.getElementById('btn-login').onclick = showLoginForm;
+        };
+
+        // --- Admin Approval (For DEMO, click on member in list to approve!) ---
+        // In practice, only you (admin) can approve users. Here, for demo, use secret key.
+        // To approve, open devtools and run: approveUser('username')
+        window.approveUser = (username) => {
+            let users = getUsers();
+            let i = users.findIndex(u=>u.username===username);
+            if (i>-1) {
+                users[i].approved = true;
+                saveUsers(users);
+                alert("کاربر تایید شد!");
+            }
+        };
+    </script>
+</body>
+</html>
